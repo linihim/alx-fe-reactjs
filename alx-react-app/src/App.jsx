@@ -1,6 +1,7 @@
-import Header from './components/Header';
-import MainContent from './components/MainContent';
-import Footer from './components/Footer';
+import UserProfile from './components/UserProfile'
+import Header from './components/Header'
+import MainContent from './components/MainContent'
+import Footer from './components/Footer'
 import WelcomeMessage from './components/WelcomeMessage'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
@@ -17,7 +18,8 @@ function App() {
       <Header />
       <MainContent />
       <Footer />
-        <a href="https://vitejs.dev" target="_blank">
+      <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
+    <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
         <a href="https://react.dev" target="_blank">
@@ -40,4 +42,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
