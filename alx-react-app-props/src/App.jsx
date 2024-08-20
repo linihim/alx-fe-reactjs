@@ -15,6 +15,7 @@ function App() {
   const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
 
   return (
+    <UserContext.Provider value={userData}>
     <>
       <div>
       <WelcomeMessage />
@@ -22,9 +23,9 @@ function App() {
       <MainContent />
       <Footer />
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
-      <UserContext.Provider value={userData}>
+      
       <ProfilePage />
-    </UserContext.Provider>
+    
     <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -45,6 +46,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
+    </UserContext.Provider>
   )
 }
 
