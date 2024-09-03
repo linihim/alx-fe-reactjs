@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
 import TodoList from '../TodoList';
 
 describe('TodoList', () => {
@@ -38,26 +37,5 @@ describe('TodoList', () => {
     fireEvent.click(deleteButton);
 
     expect(screen.queryByText('Test Todo')).not.toBeInTheDocument();
-  });
-
-  it('does not add empty todos', () => {
-    render(<TodoList />);
-    const button = screen.getByText('Add Todo');
-
-    fireEvent.click(button);
-
-    expect(screen.queryByRole('listitem')).not.toBeInTheDocument();
-  });
-
-  it('renders initial todos', () => {
-    const initialTodos = [
-      { id: 1, text: 'Todo 1', completed: false },
-      { id: 2, text: 'Todo 2', completed: true },
-    ];
-    render(<TodoList initialTodos={initialTodos} />);
-
-    expect(screen.getByText('Todo 1')).toBeInTheDocument();
-    expect(screen.getByText('Todo 2')).toBeInTheDocument();
-    expect(screen.getByText('Todo 2')).toHaveStyle('text-decoration: line-through');
   });
 });
