@@ -21,7 +21,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profile/*" element={
+          <Route path="/profile" element={
             <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
