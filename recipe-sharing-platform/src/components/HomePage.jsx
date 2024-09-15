@@ -9,6 +9,7 @@ function HomePage() {
   }, []);
 
   return (
+    
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-center mb-8">Recipe Sharing Platform</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -21,11 +22,15 @@ function HomePage() {
               <button className="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
                 View Recipe
               </button>
+              <Link to="/add-recipe" className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mt-8 inline-block">
+                    Add New Recipe
+            </Link>
             </div>
           </div>
         ))}
       </div>
     </div>
+    
   );
 }
 

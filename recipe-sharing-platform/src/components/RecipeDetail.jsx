@@ -16,6 +16,9 @@ function RecipeDetail() {
   return (
     <div className="container mx-auto px-4 py-8">
       <Link to="/" className="text-blue-500 hover:underline mb-4 inline-block">&larr; Back to Recipes</Link>
+      <Link to={`/recipe/${recipe.id}`} className="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded inline-block">
+            View Recipe
+        </Link>
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">
         <img src={recipe.image} alt={recipe.title} className="w-full h-64 object-cover" />
         <div className="p-6">
