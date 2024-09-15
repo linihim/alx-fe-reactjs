@@ -3,24 +3,34 @@
       "id": 1,
       "title": "Spaghetti Carbonara",
       "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3xmBLnEEZiONfdpuyDNCZadCZbi3qmGZSAQ&s"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3xmBLnEEZiONfdpuyDNCZadCZbi3qmGZSAQ&s",
+      "ingredients": "Spaghetti, eggs, cheese, bacon, and black pepper.",
+      "instructions": "Boil water, add spaghetti, and cook for 10-15 minutes."
     },
     {
       "id": 2,
       "title": "Chicken Tikka Masala",
       "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-      "image": "https://i0.wp.com/www.nourishdeliciously.com/wp-content/uploads/2022/11/DSC_9207.jpg"
+      "image": "https://i0.wp.com/www.nourishdeliciously.com/wp-content/uploads/2022/11/DSC_9207.jpg",
+      "ingredients": "Chicken, onion, garlic, tomato sauce, and spices.",
+      "instructions": "Heat oil in a pan and add garlic, onion, and chicken. Cook for 10-15 minutes. Add tomato sauce and cook for another 5-10 minutes."
+
     },
     {
       "id": 3,
       "title": "Vegetarian Burrito Bowl",
       "summary": "A hearty and healthy bowl filled with rice, beans, vegetables, and avocado.",
-      "image": "https://healthyfitnessmeals.com/wp-content/uploads/2022/08/Vegetarian-burrito-bowl-5.jpg"
+      "image": "https://healthyfitnessmeals.com/wp-content/uploads/2022/08/Vegetarian-burrito-bowl-5.jpg",
+      "ingredients": "Rice, beans, vegetables, and avocado.",
+      "instructions": "Heat oil in a pan and add rice, beans, and vegetables. Cook for 10-15 minutes. Add avocado and cook for another 5-10 minutes."
+
     },
     {
       "id": 4,
       "title": "Classic Beef Lasagna",
       "summary": "Layers of pasta, ground beef, tomato sauce, and cheese, baked to perfection.",
-      "image": "https://www.allrecipes.com/thmb/n4juPHgQa4dRSL_mjIlRkjhcc4s=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/994958-632592e9643145f6a26315215c0086ce.jpg"
+      "image": "https://www.allrecipes.com/thmb/n4juPHgQa4dRSL_mjIlRkjhcc4s=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/994958-632592e9643145f6a26315215c0086ce.jpg",
+      "ingredients": "Pasta, ground beef, tomato sauce, and cheese.",
+      "instructions": "Cook pasta according to package instructions. Add ground beef and tomato sauce. Cook for 15-20 minutes. Add cheese and bake for another 5-10 minutes."
     }
   ]
