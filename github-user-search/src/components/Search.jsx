@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchAdvancedUserData } from '../services/githubService';
+import { fetchUserData, fetchAdvancedUserData } from '../services/githubService';
 
 const Search = () => {
   const [searchParams, setSearchParams] = useState({
@@ -7,9 +7,11 @@ const Search = () => {
     location: '',
     minRepos: ''
   });
+  const [userData, setUserData] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [isAdvancedSearch, setIsAdvancedSearch] = useState(false);
 
   const handleInputChange = (e) => {
     setSearchParams({ ...searchParams, [e.target.name]: e.target.value });
@@ -19,11 +21,19 @@ const Search = () => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setUserData(null);
+    setSearchResults([]);
+
     try {
-      const data = await fetchAdvancedUserData(searchParams);
-      setSearchResults(data.items);
+      if (isAdvancedSearch) {
+        const data = await fetchAdvancedUserData(searchParams);
+        setSearchResults(data.items);
+      } else {
+        const data = await fetchUserData(searchParams.username);
+        setUserData(data);
+      }
     } catch (err) {
-      setError('Error fetching search results');
+      setError('Looks like we cant find the user');
     } finally {
       setLoading(false);
     }
@@ -40,37 +50,59 @@ const Search = () => {
           placeholder="Username"
           className="w-full p-2 mb-2 border rounded"
         />
-        <input
-          type="text"
-          name="location"
-          value={searchParams.location}
-          onChange={handleInputChange}
-          placeholder="Location"
-          className="w-full p-2 mb-2 border rounded"
-        />
-        <input
-          type="number"
-          name="minRepos"
-          value={searchParams.minRepos}
-          onChange={handleInputChange}
-          placeholder="Minimum Repositories"
-          className="w-full p-2 mb-2 border rounded"
-        />
+        {isAdvancedSearch && (
+          <>
+            <input
+              type="text"
+              name="location"
+              value={searchParams.location}
+              onChange={handleInputChange}
+              placeholder="Location"
+              className="w-full p-2 mb-2 border rounded"
+            />
+            <input
+              type="number"
+              name="minRepos"
+              value={searchParams.minRepos}
+              onChange={handleInputChange}
+              placeholder="Minimum Repositories"
+              className="w-full p-2 mb-2 border rounded"
+            />
+          </>
+        )}
         <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded">
           Search
         </button>
       </form>
       
+      <button 
+        onClick={() => setIsAdvancedSearch(!isAdvancedSearch)} 
+        className="mb-4 p-2 bg-gray-300 rounded"
+      >
+        {isAdvancedSearch ? 'Simple Search' : 'Advanced Search'}
+      </button>
+
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
-      {searchResults.length > 0 && (
+      
+      {userData && !isAdvancedSearch && (
+        <div className="mb-4 p-4 border rounded">
+          <img src={userData.avatar_url} alt={`${userData.login}'s avatar`} className="w-16 h-16 rounded-full" />
+          <h2 className="text-xl font-bold">{userData.name}</h2>
+          <p>Location: {userData.location || 'Not specified'}</p>
+          <p>Repositories: {userData.public_repos}</p>
+          <a href={userData.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
+            View GitHub Profile
+          </a>
+        </div>
+      )}
+
+      {searchResults.length > 0 && isAdvancedSearch && (
         <div>
           {searchResults.map(user => (
             <div key={user.id} className="mb-4 p-4 border rounded">
               <img src={user.avatar_url} alt={`${user.login}'s avatar`} className="w-16 h-16 rounded-full" />
               <h2 className="text-xl font-bold">{user.login}</h2>
-              <p>Location: {user.location || 'Not specified'}</p>
-              <p>Repositories: {user.public_repos}</p>
               <a href={user.html_url} target="_blank" rel="noopener noreferrer" className="text-blue-500">
                 View GitHub Profile
               </a>
